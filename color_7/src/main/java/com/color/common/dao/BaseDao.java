@@ -1,5 +1,7 @@
 package com.color.common.dao;
 
+import org.hibernate.SessionFactory;
+
 /**
  * 
  * 
