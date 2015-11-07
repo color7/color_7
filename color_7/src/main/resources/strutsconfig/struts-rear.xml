@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="loginPackage" extends="common" namespace="/">
+		<!-- 后台界面登录前可以进行的action操作 -->
+		<action name="loginMS" class="com.color.rear.user.action.LoginAction" method="loginPage">
+			<result name="login">/rear/login.jsp</result>
+		</action>
+		<action name="gotoIndexPage" class="com.color.rear.user.action.AdminAction" method="gotoIndexPage">
+			<result name="index">/rear/index.jsp</result>
+		</action>
+	</package>
+</struts>

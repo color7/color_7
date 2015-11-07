@@ -38,13 +38,14 @@
 	</package>
 	<!-- 必须继承json-default，可参阅struts2-json-plugin.jar包中struts-plugin.xml配置文件 -->
 	<package name="ajax" extends="json-default">
-		<action name="*" class="action.AjaxJsonAction" method="{1}">
-			<result name="{1}" type="json" /><!-- type必须是json -->
-		</action>
 	</package>
 
 
 	<!-- 导入struts配置文件 -->
 	<!-- <include file="strutsconfig/hello.xml" /> -->
+	<include file="strutsconfig/struts-front.xml"></include>
+	<include file="strutsconfig/struts-front-json.xml"></include>
+	<include file="strutsconfig/struts-rear.xml"></include>
+	<include file="strutsconfig/struts-rear-json.xml"></include>
 
 </struts>

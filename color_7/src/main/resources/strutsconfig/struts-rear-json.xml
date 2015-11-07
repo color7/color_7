@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="loginJsonPage" extends="ajax" namespace="/json">
+		<!-- 登录信息返回 -->
+		<action name="loginAdmin" class="com.color.rear.user.action.LoginAction" method="userLogin">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>
+</struts>
