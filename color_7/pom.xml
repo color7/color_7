@@ -30,18 +30,6 @@
 			<version>1.2</version>
 		</dependency>
 		
-		<!-- org.apache.common -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -156,6 +144,12 @@
 			<artifactId>shiro-spring</artifactId>
 			<version>1.2.3</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

@@ -6,5 +6,8 @@
 	<context:property-placeholder location="classpath:config.properties" />
 	<!-- 扫描(这个到时候要扫描精细一点) -->
 	<context:component-scan base-package="com.color.*"></context:component-scan>
+	<!-- SpringContext Manager -->
+	<bean class="com.color.common.utils.SpringContextManager"
+		lazy-init="false" />
 	<import resource="classpath:springconfig/spring-hibernate.xml" />
 </beans>
