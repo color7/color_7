@@ -1,0 +1,18 @@
+body{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	overflow:hidden;
+	color:#oooooo;background: #fff;font-weight: bold;
+}
+body, td {
+font-size: 14px;
+}
+
+
+.login_a_input{
+width:60px; height:20px;line-height:20px;border:0;
+text-align:center;
+font-size:12px;background: url(login_2.gif) repeat-x; color:#3b1b1b;
+}

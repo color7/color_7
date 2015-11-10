@@ -25,14 +25,17 @@ public class UserDto implements Serializable {
 	private BigDecimal percentMax;
 	private Integer parentUserId;
 	private String userLevel;
+	private String userEmail;
 
 	public UserDto() {
 	}
 
-	public UserDto(Integer uid, String codeName, String userAccount,
-			Short accountType,String userPassword, Date createTime,
-			Short userStatus, String userMobile, Short isFirstLogin,
-			BigDecimal percentMax, Integer parentUserId, String userLevel) {
+	public UserDto(Integer uid, String codeName,
+			String userAccount, Short accountType, String userPassword,
+			Date createTime, Short userStatus, String userMobile,
+			Short isFirstLogin, BigDecimal percentMax, Integer parentUserId,
+			String userLevel, String userEmail) {
+		super();
 		this.uid = uid;
 		this.codeName = codeName;
 		this.userAccount = userAccount;
@@ -45,6 +48,7 @@ public class UserDto implements Serializable {
 		this.percentMax = percentMax;
 		this.parentUserId = parentUserId;
 		this.userLevel = userLevel;
+		this.userEmail = userEmail;
 	}
 
 	public Integer getUserId() {
@@ -149,6 +153,14 @@ public class UserDto implements Serializable {
 
 	public void setUserLevel(String userLevel) {
 		this.userLevel = userLevel;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 }

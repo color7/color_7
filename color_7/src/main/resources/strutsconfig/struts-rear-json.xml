@@ -11,5 +11,10 @@
 				<param name="root">responseJson</param>
 			</result>
 		</action>
+		<action name="userInfomation" class="com.color.rear.user.action.AdminAction" method="userInfo">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
 	</package>
 </struts>

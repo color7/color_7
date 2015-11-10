@@ -70,5 +70,10 @@
 				<comment>层次</comment>
 			</column>
 		</property>
+		<property name="userEmail" type="string">
+			<column name="user_email">
+				<comment>邮箱</comment>
+			</column>
+		</property>
 	</class>
 </hibernate-mapping>

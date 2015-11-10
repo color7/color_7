@@ -7,8 +7,10 @@
  */
 package com.color.rear.user.service;
 
+import com.color.common.dto.HonorLimitDto;
 import com.color.common.dto.UserDto;
 import com.color.common.utils.JsonBean;
+import com.color.domain.User;
 
 /**
  * @ClassName: UserService
@@ -27,5 +29,9 @@ import com.color.common.utils.JsonBean;
  */
 public interface UserService {
 	public JsonBean loginUser(UserDto userDto);
+	
+	public User getUser(UserDto userDto);
+	
+	public HonorLimitDto getHonorByUser(Integer userId);
 
 }

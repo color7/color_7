@@ -6,11 +6,17 @@
 <struts>
 	<package name="loginPackage" extends="common" namespace="/">
 		<!-- 后台界面登录前可以进行的action操作 -->
-		<action name="loginMS" class="com.color.rear.user.action.LoginAction" method="loginPage">
+		<action name="login" class="com.color.rear.user.action.LoginAction" method="loginPage">
 			<result name="login">/rear/login.jsp</result>
 		</action>
 		<action name="gotoIndexPage" class="com.color.rear.user.action.AdminAction" method="gotoIndexPage">
 			<result name="index">/rear/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="rearPackage" extends="common" namespace="/rear">
+		<action name="gotosetUp" class="com.color.rear.user.action.AdminAction" method="setUp">
+			<result name="setup">/rear/membersInfoAdmin.jsp</result>
 		</action>
 	</package>
 </struts>

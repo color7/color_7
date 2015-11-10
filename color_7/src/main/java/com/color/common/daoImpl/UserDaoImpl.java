@@ -1,11 +1,13 @@
 package com.color.common.daoImpl;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.color.common.dao.UserDao;
 import com.color.common.dto.UserDto;
+import com.color.domain.HonorLimit;
 import com.color.domain.User;
 
 /**
@@ -42,6 +44,22 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		Criteria crit = this.getCurrentSession().createCriteria(User.class);
 		return (User) crit.add(Restrictions.eq("userAccount", userDto.getUserAccount()))
 				.add(Restrictions.eq("userPassword", userDto.getUserPassword())).uniqueResult();
+	}
+	
+	@Override
+	public User getUserByUid(UserDto userDto){
+		Criteria crit = this.getCurrentSession().createCriteria(User.class);
+		return (User) crit.add(Restrictions.eq("uid", userDto.getUid())).uniqueResult();
+	}
+	
+	@Override
+	public HonorLimit getHonorByUser(Integer userId){
+		User user = new User();
+		user.setUserId(userId);
+		HonorLimit honorLimit = new HonorLimit();
+		honorLimit.setUser(user);
+		Criteria crit = this.getCurrentSession().createCriteria(HonorLimit.class);
+		return (HonorLimit) crit.add(Example.create(honorLimit)).uniqueResult();
 	}
 	
 }

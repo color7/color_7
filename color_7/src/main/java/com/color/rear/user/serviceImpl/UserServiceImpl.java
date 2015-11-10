@@ -1,16 +1,16 @@
 package com.color.rear.user.serviceImpl;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.color.common.dao.UserDao;
+import com.color.common.dto.HonorLimitDto;
 import com.color.common.dto.UserDto;
 import com.color.common.utils.JsonBean;
+import com.color.domain.HonorLimit;
 import com.color.domain.User;
 import com.color.rear.user.service.UserService;
 
@@ -45,15 +45,29 @@ public class UserServiceImpl implements UserService {
 			user = userDao.getUserLogin(userDto);
 			if(user != null){
 				jb.setSuccess(true);
-				try {
-					BeanUtils.copyProperties(userDto,user);
-				} catch (IllegalAccessException | InvocationTargetException e) {
-					e.printStackTrace();
-				}
+				BeanUtils.copyProperties(user,userDto);
 				jb.setObj(userDto);
 			}
 		}
 		return jb;
+	}
+	
+	@Override
+	public User getUser(UserDto userDto) {
+		return userDao.getUserByUid(userDto);
+	}
+	
+	@Override
+	public HonorLimitDto getHonorByUser(Integer userId){
+		HonorLimit honorLimit = userDao.getHonorByUser(userId);
+		HonorLimitDto h = new HonorLimitDto();
+		if(honorLimit != null){
+			BeanUtils.copyProperties(honorLimit, h);
+			if(honorLimit.getUser() != null){
+				BeanUtils.copyProperties(honorLimit.getUser(), h);
+			}
+		}
+		return h;
 	}
 
 	public UserDao getUserDao() {
@@ -64,6 +78,5 @@ public class UserServiceImpl implements UserService {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
-
 
 }

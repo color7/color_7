@@ -1,6 +1,17 @@
 package com.color.rear.user.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.color.common.action.ActionSupper;
+import com.color.common.dto.HonorLimitDto;
+import com.color.common.dto.UserDto;
+import com.color.common.utils.GetRequestUtil;
 import com.color.common.utils.RearPageUtil;
+import com.color.rear.user.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @ClassName: AdminAction
@@ -17,7 +28,11 @@ import com.color.common.utils.RearPageUtil;
 
  --------------------------------------------------------------------------------------
  */
-public class AdminAction {
+public class AdminAction extends ActionSupper {
+	
+	private UserService userServiceF;
+	
+	private Map<String, Object> responseJson;
 	
 	/**
 	 * @Title: gotoIndexPage
@@ -27,6 +42,52 @@ public class AdminAction {
 	 */
 	public String gotoIndexPage(){
 		return RearPageUtil.INDEX_PAGE;
+	}
+	
+	/**
+	 * @Title: setUp
+	 * @Description: (返回设置页面)
+	 * @return
+	 * @Author: 林润树
+	 */
+	public String setUp(){
+		UserDto userDto = GetRequestUtil.getLoginUserDto();
+		ActionContext action = ActionContext.getContext();
+		HonorLimitDto h = userServiceF.getHonorByUser(userDto.getUserId());
+		action.put("user", h);
+		return RearPageUtil.SETUP_PAGE;
+	}
+	
+	/**
+	 * @Title: userInfo
+	 * @Description: (返回用户信息)
+	 * @return
+	 * @Author: 林润树
+	 */
+	public String userInfo(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		UserDto userDto = GetRequestUtil.getLoginUserDto();
+		HonorLimitDto h = userServiceF.getHonorByUser(userDto.getUserId());
+		map.put("honor", h);
+		setResponseJson(map);
+		return "success";
+	}
+
+	public UserService getUserServiceF() {
+		return userServiceF;
+	}
+
+	@Autowired
+	public void setUserServiceF(UserService userServiceF) {
+		this.userServiceF = userServiceF;
+	}
+
+	public Map<String, Object> getResponseJson() {
+		return responseJson;
+	}
+
+	public void setResponseJson(Map<String, Object> responseJson) {
+		this.responseJson = responseJson;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.color.common.dao;
 
 import com.color.common.dto.UserDto;
+import com.color.domain.HonorLimit;
 import com.color.domain.User;
 
 /**
@@ -22,5 +23,9 @@ public interface UserDao extends BaseDao<User> {
 	public User getUserAccount(UserDto userDto);
 	
 	public User getUserLogin(UserDto userDto);
+	
+	public User getUserByUid(UserDto userDto);
+	
+	public HonorLimit getHonorByUser(Integer userId);
 
 }

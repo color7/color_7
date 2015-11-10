@@ -18,27 +18,57 @@ public class User implements java.io.Serializable {
 	private static final long serialVersionUID = -3031848295913066566L;
 	private Integer userId;
 	private Integer uid;
+	/**
+	 * 代号
+	 */
 	private String codeName;
+	/**
+	 * 账号
+	 */
 	private String userAccount;
+	/**
+	 * 0:非账号
+	 * 1:子账号
+	 */
 	private Short accountType;
 	private String userPassword;
 	private Date createTime;
+	/**
+	 * 0:停用
+	 * 1:启用
+	 * 2:禁止下注
+	 */
 	private Short userStatus;
 	private String userMobile;
+	/**
+	 * 0:表示第一次登陸
+	 * 1:非第一次登陸
+	 */
 	private Short isFirstLogin;
+	/**
+	 * 拦货占城上限
+	 */
 	private BigDecimal percentMax;
+	/**
+	 * 0:表示沒有
+	 */
 	private Integer parentUserId;
+	/**
+	 * 1:大boss 2:大股東。。。
+	 */
 	private String userLevel;
+	
+	private String userEmail;
 
 	public User() {
 	}
 
-	public User(Integer userId, Integer uid, String codeName,
+	public User(Integer uid, String codeName,
 			String userAccount, Short accountType, String userPassword,
 			Date createTime, Short userStatus, String userMobile,
 			Short isFirstLogin, BigDecimal percentMax, Integer parentUserId,
-			String userLevel) {
-		this.userId = userId;
+			String userLevel, String userEmail) {
+		super();
 		this.uid = uid;
 		this.codeName = codeName;
 		this.userAccount = userAccount;
@@ -51,7 +81,10 @@ public class User implements java.io.Serializable {
 		this.percentMax = percentMax;
 		this.parentUserId = parentUserId;
 		this.userLevel = userLevel;
+		this.userEmail = userEmail;
 	}
+
+
 
 	public Integer getUserId() {
 		return this.userId;
@@ -155,6 +188,14 @@ public class User implements java.io.Serializable {
 
 	public void setUserLevel(String userLevel) {
 		this.userLevel = userLevel;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 }

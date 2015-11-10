@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
@@ -8,6 +9,8 @@
 <script src="./javascript/menu.js" type="text/javascript"></script>
 <script src="./javascript/ajax.js" type="text/javascript"></script>
 <script src="./javascript/frank.js" type="text/javascript"></script>
+<script type="text/javascript" src="../resources/js/jquery-1.8.3.min.js"></script>
+<script src="./js/jQuery_membersInfoAdmin.js" type="text/javascript"></script>
 <script type="text/javascript">
 function checkalloption(form, value) {
 	for(var i = 0; i < form.elements.length; i++) {
@@ -57,80 +60,118 @@ function redirect(url) {
 	window.location.replace(url);
 }
 
-var collapsed = getcookie('cg_szyx_cookie_collapse');
 function collapse_change(menucount) {
-
-	if($('menu_' + menucount).style.display == 'none') {
-		$('menu_' + menucount).style.display = '';collapsed = collapsed.replace('[' + menucount + ']' , '');
-		$('menuimg_' + menucount).src = './images//admincg/menu_reduce.gif';
+	
+	if($('#menu_' + menucount).css("display") == 'none') {
+		$('#menu_' + menucount).css("display","");
+		$('#menuimg_' + menucount).attr("src","./images//admincg/menu_reduce.gif");
 		
 	} else {
 
-		$('menu_' + menucount).style.display = 'none';collapsed += '[' + menucount + ']';
-		$('menuimg_' + menucount).src = './images//admincg/menu_add.gif';
+		$('#menu_' + menucount).css("display","none");
+		$('#menuimg_' + menucount).attr("src","./images//admincg/menu_add.gif");
 	}
-	setcookie('cg_szyx_cookie_collapse', collapsed, 2592000);
 }
 </script>
 </head>
 
 <body leftmargin="10" topmargin="10">
 <div id="append_parent"></div>
-<table width="99%" align="center" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
-<script language="JavaScript">
-<!-- 
-function openwinchuhuo(url) {
-var iWidth=600; //窗口宽度 
-var iHeight=600;//窗口高度 
-var iTop=(window.screen.height-iHeight)/2; 
-var iLeft=(window.screen.width-iWidth)/2; 
-window.open(url,"Detail1676868019","Scrollbars=no,Toolbar=no,Location=no,Direction=no,Resizeable=no, Width="+iWidth+" ,Height="+iHeight+",top="+iTop+",left="+iLeft); 
-}
-
-//--> 
-</script>
-	<style media="print"> .Noprint{display:none;} </style> <table class="Noprint" width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tbody><tr><td><table width="100%" style="border:none;" border="0" cellpadding="0" cellspacing="0"><tbody><tr style="border:none;"><td style="border:none;" width="15%"><a href="#" onclick=" parent.main.location='?action=home';return false;">位置</a>&nbsp;»&nbsp;基本资料</td>
-		<td width="85%" style="border:none;text-align:right;padding-right:10px;"><a href="childUserAdmin.html" target="main"><b>子账号</b></a> | <a href="membersInfoAdmin.html" target="main" class="meuntop"><b>基本资料</b></a> | <a href="changePsw.html" target="main"><b>修改密码</b></a></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><br><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder"><tbody><tr class="header"><td><div style="float:left; margin-left:0px; padding-top:8px"><a href="###" onclick="collapse_change('tip')">信息提示</a></div><div style="float:right; margin-right:4px; padding-bottom:9px"><a href="###" onclick="collapse_change('tip')"><img id="menuimg_tip" src="./images//admincg/menu_reduce.gif" border="0"></a></div></td></tr></tbody><tbody id="menu_tip" style="display:"><tr><td><ul><li>总信用额度：2000000；&nbsp;&nbsp;&nbsp;&nbsp;可分配信用额度：69990；&nbsp;&nbsp;&nbsp;&nbsp;已分配信用额度：1930010；</li></ul></td></tr></tbody></table><br>
-<form method="post" name="datamembers" action="index.php?action=membersinfoadmin">
+<table width="99%" align="center" border="0" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+		<td>
+			<style media="print"> .Noprint{display:none;} </style>
+			<table class="Noprint" width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>
+							<table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+								<tbody>
+									<tr>
+										<td>
+											<table width="100%" style="border:none;" border="0" cellpadding="0" cellspacing="0">
+												<tbody>
+													<tr style="border:none;">
+														<td style="border:none;" width="15%">
+															<a href="#" onclick=" parent.main.location='?action=home';return false;">位置</a>&nbsp;»&nbsp;基本资料
+														</td>
+														<td width="85%" style="border:none;text-align:right;padding-right:10px;">
+															<a href="childUserAdmin.html" target="main"><b>子账号</b></a> | 
+															<a href="membersInfoAdmin.html" target="main" class="meuntop"><b>基本资料</b></a> | 
+															<a href="changePsw.html" target="main"><b>修改密码</b></a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+				<tbody>
+					<tr class="header">
+						<td>
+							<div style="float:left; margin-left:0px; padding-top:8px">
+								<a href="###" onclick="collapse_change('tip')">信息提示</a>
+							</div>
+							<div style="float:right; margin-right:4px; padding-bottom:9px">
+								<a href="###" onclick="collapse_change('tip')"><img id="menuimg_tip" src="./images//admincg/menu_reduce.gif" border="0"></a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody id="menu_tip" style="display">
+					<tr>
+						<td>
+							<ul>
+								<li>总信用额度：${user.honorLimitMax}；&nbsp;&nbsp;&nbsp;&nbsp;可分配信用额度：${user.residueHonorLimit}；&nbsp;&nbsp;&nbsp;&nbsp;已分配信用额度：${user.usedHonorLimit}；</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+<form method="post" name="datamembers" action="">
 <input type="hidden" name="formhash" value="82c0edaa">
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
-<tbody><tr class="header"><td colspan="4">新增</td></tr>
+	<tbody>
+		<tr class="header">
+			<td colspan="4">新增</td>
+		</tr>
 
-<tr>
-<td class="altbg1">账　　号:</td>
-<td align="right" class="altbg2"><input type="text" name="newusername" value="bb7" disabled=""></td>
-<td class="altbg1">Email:</td>
-<td align="right" class="altbg2"><input type="text" name="newemail" value="" disabled=""></td>
-</tr>
-<tr>
-<td class="altbg1">代　　号:</td>
-<td align="right" class="altbg2"><input type="text" name="nickname" value="三35" disabled=""></td>
-<td class="altbg1">联系电话:</td>
-<td align="right" class="altbg2"><input type="text" name="phone" value="0" disabled=""></td>
-</tr>
-<tr>
-<td class="altbg1">占成上限:</td>
-<td align="right" class="altbg2"><input type="text" name="occupy" value="0" disabled=""></td>
-<!--<td class="altbg1">手机电话:</td>
-<td align="right" class="altbg2"><input type="text" name="handset" value="0" disabled></td>-->
-<!--<td class="altbg1">下级人数上限:</td>
-<td align="right" class="altbg2"><input type="text" name="manlimit" value="0" disabled>已分配人数：0</td>
--->
-
-
-<td class="altbg1">信用额度:</td>
-<td align="right" class="altbg2" colspan="3"><input type="text" name="credits" value="2000000" disabled="">
-<input class="button" disabled="true" style="color:#c0c0c0" type="button" onclick="javascript:if(window.confirm('确实要对下级信用额度归零吗?')){location.href='index.php?action=membersguiling';}else return;return false;" name="guilingsubmit" value="下级归零"></td>
-</tr>
-
-<!--<tr>
-<td class="altbg1">占成间距:</td>
-<td align="right" class="altbg2" colspan="3"><input type="text" name="occupyjj" value="" ></td>
-</tr>-->
-</tbody></table><br><center>
-<input type="hidden" name="addsubmit">
-<input class="button" type="button" onclick="javascript:if(window.confirm('如果庄家先吃满，则不以所设成数来分配，以实际分配到拦货中金额为准，你同意吗?')){ datamembers.addsubmit.value='addsubmit';datamembers.submit();}else return; " name="addsubmit2" value="提 交">
+		<tr>
+			<td class="altbg1">账　　号:</td>
+			<td align="right" class="altbg2"><input type="text" name="userAccount" value="${user.userAccount}" disabled=""></td>
+			<td class="altbg1">Email:</td>
+			<td align="right" class="altbg2"><input type="text" name="userEmail" value="${user.userEmail}" disabled=""></td>
+		</tr>
+		<tr>
+			<td class="altbg1">代　　号:</td>
+			<td align="right" class="altbg2"><input type="text" name="codeName" value="${user.codeName}" disabled=""></td>
+			<td class="altbg1">联系电话:</td>
+			<td align="right" class="altbg2"><input type="text" name="userMobile" value="${user.userMobile}" disabled=""></td>
+		</tr>
+		<tr>
+			<td class="altbg1">占成上限:</td>
+			<td align="right" class="altbg2"><input type="text" name="percentMax" value="${user.percentMax}" disabled=""></td>
+			<td class="altbg1">信用额度:</td>
+			<td align="right" class="altbg2" colspan="3"><input type="text" name="credits" value="${user.honorLimitMax}" disabled="">
+				<input class="button" disabled="true" style="color:#c0c0c0" type="button" onclick="javascript:if(window.confirm('确实要对下级信用额度归零吗?')){location.href='index.php?action=membersguiling';}else return;return false;" name="guilingsubmit" value="下级归零">
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<center>
+	<input type="hidden" name="addsubmit">
+	<input class="button" type="button" onclick="javascript:if(window.confirm('如果庄家先吃满，则不以所设成数来分配，以实际分配到拦货中金额为准，你同意吗?')){ datamembers.addsubmit.value='addsubmit';datamembers.submit();}else return; " name="addsubmit2" value="提 交">
 </center>
 <br>
 <br><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
@@ -155,10 +196,6 @@ window.open(url,"Detail1676868019","Scrollbars=no,Toolbar=no,Location=no,Directi
 <td class="altbg2"><span style="display:none">98</span></td>
 <td class="altbg1"><span style="display:none"></span></td>
 <td class="altbg2"><span style="display:none">0</span></td>
-<!--<td class="altbg1">
-<select name="fixstrhuishui" onchange="showfrank('1',this.value)" >
-<option value="0.18" >0.18</option><option value="0.179" >0.179</option><option value="0.178" >0.178</option><option value="0.177" >0.177</option><option value="0.176" >0.176</option><option value="0.175" >0.175</option><option value="0.174" >0.174</option><option value="0.173" >0.173</option><option value="0.172" >0.172</option><option value="0.171" >0.171</option><option value="0.17" >0.17</option><option value="0.169" >0.169</option><option value="0.168" >0.168</option><option value="0.167" >0.167</option><option value="0.166" >0.166</option><option value="0.165" >0.165</option><option value="0.164" >0.164</option><option value="0.163" >0.163</option><option value="0.162" >0.162</option><option value="0.161" >0.161</option><option value="0.16" >0.16</option><option value="0.159" >0.159</option><option value="0.158" >0.158</option><option value="0.157" >0.157</option><option value="0.156" >0.156</option><option value="0.155" >0.155</option><option value="0.154" >0.154</option><option value="0.153" >0.153</option><option value="0.152" >0.152</option><option value="0.151" >0.151</option><option value="0.15" >0.15</option><option value="0.149" >0.149</option><option value="0.148" >0.148</option><option value="0.147" >0.147</option><option value="0.146" >0.146</option><option value="0.145" >0.145</option><option value="0.144" >0.144</option><option value="0.143" >0.143</option><option value="0.142" >0.142</option><option value="0.141" >0.141</option><option value="0.14" >0.14</option><option value="0.139" >0.139</option><option value="0.138" >0.138</option><option value="0.137" >0.137</option><option value="0.136" >0.136</option><option value="0.135" >0.135</option><option value="0.134" >0.134</option><option value="0.133" >0.133</option><option value="0.132" >0.132</option><option value="0.131" >0.131</option><option value="0.13" >0.13</option><option value="0.129" >0.129</option><option value="0.128" >0.128</option><option value="0.127" >0.127</option><option value="0.126" >0.126</option><option value="0.125" >0.125</option><option value="0.124" >0.124</option><option value="0.123" >0.123</option><option value="0.122" >0.122</option><option value="0.121" >0.121</option><option value="0.12" >0.12</option><option value="0.119" >0.119</option><option value="0.118" >0.118</option><option value="0.117" >0.117</option><option value="0.116" >0.116</option><option value="0.115" >0.115</option><option value="0.114" >0.114</option><option value="0.113" >0.113</option><option value="0.112" >0.112</option><option value="0.111" >0.111</option><option value="0.11" >0.11</option><option value="0.109" >0.109</option><option value="0.108" >0.108</option><option value="0.107" >0.107</option><option value="0.106" >0.106</option><option value="0.105" >0.105</option><option value="0.104" >0.104</option><option value="0.103" >0.103</option><option value="0.102" >0.102</option><option value="0.101" >0.101</option><option value="0.1" >0.1</option><option value="0.099" >0.099</option><option value="0.098" >0.098</option><option value="0.097" >0.097</option><option value="0.096" >0.096</option><option value="0.095" >0.095</option><option value="0.094" >0.094</option><option value="0.093" >0.093</option><option value="0.092" >0.092</option><option value="0.091" >0.091</option><option value="0.09" >0.09</option><option value="0.089" >0.089</option><option value="0.088" >0.088</option><option value="0.087" >0.087</option><option value="0.086" >0.086</option><option value="0.085" >0.085</option><option value="0.084" >0.084</option><option value="0.083" >0.083</option><option value="0.082" >0.082</option><option value="0.081" >0.081</option><option value="0.08" >0.08</option><option value="0.079" >0.079</option><option value="0.078" >0.078</option><option value="0.077" >0.077</option><option value="0.076" >0.076</option><option value="0.075" >0.075</option><option value="0.074" >0.074</option><option value="0.073" >0.073</option><option value="0.072" >0.072</option><option value="0.071" >0.071</option><option value="0.07" >0.07</option><option value="0.069" >0.069</option><option value="0.068" >0.068</option><option value="0.067" >0.067</option><option value="0.066" >0.066</option><option value="0.065" >0.065</option><option value="0.064" >0.064</option><option value="0.063" >0.063</option><option value="0.062" >0.062</option><option value="0.061" >0.061</option><option value="0.06" >0.06</option><option value="0.059" >0.059</option><option value="0.058" >0.058</option><option value="0.057" >0.057</option><option value="0.056" >0.056</option><option value="0.055" >0.055</option><option value="0.054" >0.054</option><option value="0.053" >0.053</option><option value="0.052" >0.052</option><option value="0.051" >0.051</option><option value="0.05" >0.05</option><option value="0.049" >0.049</option><option value="0.048" >0.048</option><option value="0.047" >0.047</option><option value="0.046" >0.046</option><option value="0.045" >0.045</option><option value="0.044" >0.044</option><option value="0.043" >0.043</option><option value="0.042" >0.042</option><option value="0.041" >0.041</option><option value="0.04" >0.04</option><option value="0.039" >0.039</option><option value="0.038" >0.038</option><option value="0.037" >0.037</option><option value="0.036" >0.036</option><option value="0.035" >0.035</option><option value="0.034" >0.034</option><option value="0.033" >0.033</option><option value="0.032" >0.032</option><option value="0.031" >0.031</option><option value="0.03" >0.03</option><option value="0.029" >0.029</option><option value="0.028" >0.028</option><option value="0.027" >0.027</option><option value="0.026" >0.026</option><option value="0.025" >0.025</option><option value="0.024" >0.024</option><option value="0.023" >0.023</option><option value="0.022" >0.022</option><option value="0.021" >0.021</option><option value="0.02" >0.02</option><option value="0.019" >0.019</option><option value="0.018" >0.018</option><option value="0.017" >0.017</option><option value="0.016" >0.016</option><option value="0.015" >0.015</option><option value="0.014" >0.014</option><option value="0.013" >0.013</option><option value="0.012" >0.012</option><option value="0.011" >0.011</option><option value="0.01" >0.01</option><option value="0.009" >0.009</option><option value="0.008" >0.008</option><option value="0.007" >0.007</option><option value="0.006" >0.006</option><option value="0.005" >0.005</option><option value="0.004" >0.004</option><option value="0.003" >0.003</option><option value="0.002" >0.002</option><option value="0.001" >0.001</option><option value="0"  selected >0</option></select></td>
-<td class="altbg2"><span id="showfrank_1">98</span></td>-->
 </tr>
 
 	

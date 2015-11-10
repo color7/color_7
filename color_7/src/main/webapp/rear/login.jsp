@@ -3,17 +3,49 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登录页面</title>
-<link rel="stylesheet" href="css/home.css" type="text/css" media="screen" charset="utf-8"/>
-<link rel="stylesheet" href="css/sign.min.css" type="text/css" media="screen" charset="utf-8"/>
-<script type="text/javascript" src="../resources/js/jquery-1.8.3.min.js"></script>
-<script>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>GemailLogin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<link rel="shortcut icon" href="./rear/images/favicon.ico" type="image/x-icon"> 
+<link rel="stylesheet" type="text/css" id="css" href="./rear/images/login_13/User_Admin_Login.css">
+<link rel="stylesheet" type="text/css" id="css" href="./rear/images/logmsg.css">
+<script language="javascript" src="./rear/javascript/jquery.min.js?ver=1"></script>
+<script language="javascript" src="./rear/javascript/base64.min.js?ver=2"></script>
+<script language="javascript" src="./rear/javascript/jquery.md5.js?ver=3"></script>
+<script language="javascript" src="./rear/javascript/jquery.jcryption.3.1.0.js?ver=1"></script>
+<script language="javascript" src="./rear/javascript/loginfrm.js?ver=1"></script>
+<script type="text/javascript">
+<!--
+function finalcheck(){
+	if($("#login_admin").attr("disabled")=="disabled")return false;
+	if(document.loginfrm.admin_username368109810.value==""){
+		alert("Please fill out the account！");
+		document.loginfrm.admin_username368109810.focus();
+		return false;
+	}else if(document.loginfrm.admin_password368109810.value==""){
+		alert("Please fill in password！");
+		document.loginfrm.admin_password368109810.focus();
+		return false;
+	}
+	
+	return onLogin("368109810",2);
+}
+
+function redirect(url) {
+	window.location.replace(url);
+}
+function send(event){   
+	if(event.keyCode==13) { 
+		return finalcheck();
+	}   
+}
+if(self.parent.frames.length != 0) {
+	self.parent.location=document.location;
+}
+//-->
 $(document).ready(function(){
-	$(".loginbtn").click(function(){
+	$("#login_admin").click(function(){
 		$.ajax({
 			type : "post",
 			url : "<%=path%>/json/loginAdmin.action",
@@ -21,8 +53,9 @@ $(document).ready(function(){
 					 "userPassword":$("input[name='userPassword']").val()},
 			dataType : "json",
 			success : function(data) {
-				if (data.status==0) {
-					window.location.href="<%=path%>/gotoIndexPage";
+				var obj = eval("("+data.returnJson+")");
+				if (obj.status==0) {
+					window.location.href="<%=path%>/gotoIndexPage.action";
 				}else{
 					alert("用户不存在或密码错误！")
 				}
@@ -30,111 +63,48 @@ $(document).ready(function(){
 	 });
 	});
 })
-</script>
-</head>
 
-<body style="background-color:#fff;">
-	<div id="cboxOverlay" style="display: none;"></div>
-    <div class="sign">
-        <div class="loginWrap">
-        <a class="logo" href=""></a>
-        <div class="loginPic">
-            <div class="loginBord">
-                <div class="loginTit">
-                    <div class="tosignup">
-                        还没有暴走团账号？
-                        <a href="/i/account/signup?login">30秒注册</a>
-                    </div>
-                    <h1>登录暴走团</h1>
-                </div>
-                <form id="login-user-form" method="post" action="<%=path %>/json/loginAdmin.action">
-                    <input type="hidden" name="redirect" value="" id="redirect"/>
-                    <div class="textbox_ui user">
-                                    <input type="text" name="userAccount" placeholder="用户名/邮箱/手机号" required="" autofocus=""/>
-                                    <div class="invalid">
-                            <i></i>
-                            <div class="required">请输入账号</div>
-                            <div class="custom"></div>
-                        </div>
-                    </div>
-                    <div class="textbox_ui pass">
-                                    <input type="password" name="userPassword" placeholder="密码" required=""/>
-                                    <div class="invalid">
-                            <i></i>
-                            <div class="required">请输入密码</div>
-                            <div class="custom"></div>
-                        </div>
-                    </div>
-                    <p>
-                        <a href="/i/account/resetreq?=login" class="fr">忘记密码?</a>
-                        <label for="agree_userterm">
-                            <input type="checkbox" name="auto_login" id="agree_userterm" checked=""/>
-                            &nbsp;自动登录
-                        </label>
-                    </p>
-                    <div class="verityWrap" style="display: none;">
-                        <div class="textbox_ui">
-                            <input type="text" name="hash_code" placeholder="输入验证码" autocomplete="off" value="" pattern="\d{4}"/>
-                            <div class="invalid">
-                                <i></i>
-                                <div class="required">请输入验证码</div>
-                                <div class="format">验证码输入有误</div>
-                                <div class="custom"></div>
-                            </div>
-                            <div class="focus_text">按右图填写，不区分大小写</div>
-                        </div>
-                        <a href="#">
-                            <img src="/i/account/hash_code?from=signup&amp;1410597689"/>
-                            换一张
-                        </a>
-                    </div>
-                    <input class="loginbtn" type="button" value="登 录"/>
-                    <div id="errorMsg"></div>
-                </form>
-                <div class="otherAccout">
-                    <p>你也可以使用以下账号登录</p>
-                    <a href="/i/extconnect/?site_name=cb_qq&amp;redirect="> <i class="iqq"></i>QQ</a>
-                    <a href="/i/extconnect/?site_name=sina_weibo&amp;redirect="> <i class="iweibo"></i>新浪微博</a>
-                    <a href="/i/extconnect/?site_name=renren&amp;redirect="> <i class="irenren"></i>人人网</a>
-                    <a href="/i/extconnect/?referer=360tuan_dh&amp;site_name=site_360&amp;redirect="> <i class="i360"></i>360</a>
-                    <a href="/i/extconnect/?site_name=baidu&amp;redirect="> <i class="ibaidu"></i>百度</a>
-                    <a href="/i/extconnect/?site_name=xunlei&amp;redirect="> <i class="ixunlei"></i>迅雷</a>
-                    <a href="/i/extconnect/?site_name=tuan800&amp;redirect="> <i class="ituan"></i>团800</a>
-                    <a href="/i/extconnect/?site_name=mogujie&amp;redirect="> <i class="imogu"></i>蘑菇街</a>
-                    <a href="/i/extconnect/?site_name=alipay&amp;redirect="> <i class="ialipay"></i>支付宝</a>
-                </div>
-                <div class="shadow_l"></div>
-                <div class="shadow_r"></div>
-            </div>
-        </div>
-     	</div>
-    </div>
-    <div class="clear"></div>
-    <!--页脚-->
-    <div id="footer_container" style="padding-top:5px;background: none;border-top: none;">
-    <div id="footer_textarea">
-        <div style="display:none"><a href="">每日更新</a></div>
-                
-        <div class="footer_con" id="footer_copyright">
-            <p class="footer_copy_con">
-                Copyleft © 2010-2014 软件工程暴走集团 Jumei.com 保留一切权利。
-                                客服热线：400-123-8888，4000-123-888 
-                                <br>
-                京公网安备 110105001608 | 
-                <a href="" target="_blank" rel="nofollow">京ICP证111033号</a> | 食品流通许可证 SP1101051110165515（1-1）
-                | <a href="" target="_blank" rel="nofollow">营业执照</a>
-            </p>
-            <p>
-                <a href="javascript:void(0)" class="footer_copy_logo logo01" rel="nofollow"></a>
-                <a href="" target="_blank" class="footer_copy_logo logo02" rel="nofollow"></a>
-                <a href="javascript:void(0)" class="footer_copy_logo logo03" rel="nofollow"></a>
-                <a href="javascript:void(0)" class="footer_copy_logo logo04" rel="nofollow"></a>
-                <a href="" target="_blank" class="footer_copy_logo logo05" rel="nofollow"></a>
-            </p>
-        </div>
+</script></head>
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td>
+		
+		<form method="post" name="loginfrm"><input type="hidden" name="sid" value="FMXwTC"><input type="hidden" name="loginaction" value="1">
+		<input type="hidden" name="Hrand" value="368109810"><br><table align="center" width="840" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr>
+		<td colspan="3" height="62" background="./rear/images/login_13/2_01.gif">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr>
+		<td width="220"></td>
+		<td width="40">AT:&nbsp;&nbsp;</td>
+		<td width="120"><input type="text" id="admin_username" name="userAccount" onkeypress="send(event)" value="" style="width:100px; height:20px; background:#e9e6e6; font-size:12px; border:solid 1px #a0a0a0; color:#3b1b1b;"></td>
+		<td width="40">PW:&nbsp;&nbsp;</td>
+		<td width="120"><input type="password" id="admin_password" onkeypress="send(event)" name="userPassword" style="width:100px; height:20px; background:#e9e6e6; font-size:12px; border:solid 1px #a0a0a0; color:#3b1b1b;"></td>
+        <td height="30" width="*">&nbsp;&nbsp;
+        <input type="button" id="login_admin" name="login_admin" value=" login" class="login_a_input"/>
+       </td>
+	</tr>
+</tbody></table>
+			</td>
+	</tr>
+	<tr>
+		<td background="./rear/images/login_13/2_02.gif" width="280" height="228"></td>
+		<td background="./rear/images/login_13/2_03.gif" width="280"></td>
+		<td background="./rear/images/login_13/2_04.gif" width="280"></td>
+	</tr>
+	<tr>
+		<td background="./rear/images/login_13/2_05.gif" height="145"></td>
+		<td background="./rear/images/login_13/2_06.gif"></td>
+		<td background="./rear/images/login_13/2_07.gif"></td>
+	</tr>
+	<tr>
+		<td background="./rear/images/login_13/2_08.gif" height="145"></td>
+		<td background="./rear/images/login_13/2_09.gif"></td>
+		<td background="./rear/images/login_13/2_10.gif"></td>
+	</tr>
+</tbody></table>
+</form><script type="text/javascript">setTimeout("document.loginfrm.admin_username368109810.focus();",200);</script></td></tr></tbody></table>
 
-            </div>
-</div>
-</body>
-</html>
 
+
+<script type="text/javascript" charset="utf-8" id="0DF98C125855B791_Analytics" src="http://tajs.qq.com/stats?sId=26506734"></script></body></html>
