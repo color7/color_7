@@ -22,13 +22,13 @@
 				<comment>玩法是否启用</comment>
 			</column>
 		</property>
-		<property name="oddsMax" type="big_decimal">
-			<column name="odds_max" precision="6" scale="3">
+		<property name="oddsMax" type="string">
+			<column name="odds_max" length="20">
 				<comment>赔率上限</comment>
 			</column>
 		</property>
-		<property name="palyMin" type="java.lang.Integer">
-			<column name="paly_min">
+		<property name="palyMin" type="big_decimal">
+			<column name="paly_min" precision="11" scale="1">
 				<comment>最小下注</comment>
 			</column>
 		</property>

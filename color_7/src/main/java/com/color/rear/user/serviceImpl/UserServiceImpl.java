@@ -1,5 +1,11 @@
 package com.color.rear.user.serviceImpl;
 
+import com.color.common.dao.PlayDao;
+import com.color.common.dao.PlayGroupDao;
+import com.color.common.dto.PlayDto;
+import com.color.common.dto.PlayGroupDto;
+import com.color.domain.Play;
+import com.color.domain.PlayGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +19,9 @@ import com.color.common.utils.JsonBean;
 import com.color.domain.HonorLimit;
 import com.color.domain.User;
 import com.color.rear.user.service.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName: UserServiceImpl
@@ -35,6 +44,10 @@ public class UserServiceImpl implements UserService {
 	private Logger loger = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	private UserDao userDao;
+
+	private PlayDao playDao;
+
+	private PlayGroupDao playGroupDao;
 
 	@Override
 	public JsonBean loginUser(UserDto userDto) {
@@ -70,6 +83,42 @@ public class UserServiceImpl implements UserService {
 		return h;
 	}
 
+	@Override
+	public List<PlayDto> getPlayData() {
+		List<PlayDto> list = new ArrayList<PlayDto>();
+		String hql = "select p from Play as p left join fetch p.playGroup";
+		List<Play> l = playDao.find(hql);
+		if (l != null && l.size()>0){
+			for (Play play : l) {
+				PlayDto p = new PlayDto();
+				BeanUtils.copyProperties(play,p);
+				if (play.getPlayGroup() != null){
+					BeanUtils.copyProperties(play.getPlayGroup(),p);
+				}
+				list.add(p);
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public List<PlayDto> getPlayGroupData(){
+		List<PlayDto> list = new ArrayList<PlayDto>();
+		String hql = "select p from Play as p left join fetch p.playGroup group by p.playGroup";
+		List<Play> l = playDao.find(hql);
+		if (l != null && l.size()>0){
+			for (Play play : l) {
+				PlayDto p = new PlayDto();
+				BeanUtils.copyProperties(play,p);
+				if (play.getPlayGroup() != null){
+					BeanUtils.copyProperties(play.getPlayGroup(),p);
+				}
+				list.add(p);
+			}
+		}
+		return list;
+	}
+
 	public UserDao getUserDao() {
 		return userDao;
 	}
@@ -79,4 +128,21 @@ public class UserServiceImpl implements UserService {
 		this.userDao = userDao;
 	}
 
+	public PlayDao getPlayDao() {
+		return playDao;
+	}
+
+	@Autowired
+	public void setPlayDao(PlayDao playDao) {
+		this.playDao = playDao;
+	}
+
+	public PlayGroupDao getPlayGroupDao() {
+		return playGroupDao;
+	}
+
+	@Autowired
+	public void setPlayGroupDao(PlayGroupDao playGroupDao) {
+		this.playGroupDao = playGroupDao;
+	}
 }

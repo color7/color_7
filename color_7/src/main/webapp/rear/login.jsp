@@ -8,8 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
 <link rel="shortcut icon" href="./rear/images/favicon.ico" type="image/x-icon"> 
-<link rel="stylesheet" type="text/css" id="css" href="./rear/images/login_13/User_Admin_Login.css">
-<link rel="stylesheet" type="text/css" id="css" href="./rear/images/logmsg.css">
+<link rel="stylesheet" type="text/css" href="./rear/images/login_13/User_Admin_Login.css">
+<link rel="stylesheet" type="text/css" href="./rear/images/logmsg.css">
 <script language="javascript" src="./rear/javascript/jquery.min.js?ver=1"></script>
 <script language="javascript" src="./rear/javascript/base64.min.js?ver=2"></script>
 <script language="javascript" src="./rear/javascript/jquery.md5.js?ver=3"></script>
@@ -43,7 +43,7 @@ function send(event){
 if(self.parent.frames.length != 0) {
 	self.parent.location=document.location;
 }
-//-->
+-->
 $(document).ready(function(){
 	$("#login_admin").click(function(){
 		$.ajax({

@@ -1,14 +1,14 @@
 package com.color.common.daoImpl;
 
+import com.color.common.dao.UserDao;
+import com.color.common.dto.UserDto;
+import com.color.domain.HonorLimit;
+import com.color.domain.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.color.common.dao.UserDao;
-import com.color.common.dto.UserDto;
-import com.color.domain.HonorLimit;
-import com.color.domain.User;
 
 /**
  * @ClassName: UserDaoImpl

@@ -17,8 +17,8 @@ public class Play implements java.io.Serializable {
 	private PlayGroup playGroup;
 	private String palyName;
 	private Short palyEnabled;
-	private BigDecimal oddsMax;
-	private Integer palyMin;
+	private String oddsMax;
+	private BigDecimal palyMin;
 	private Integer singleMax;
 	private Integer singleItemMax;
 
@@ -26,7 +26,7 @@ public class Play implements java.io.Serializable {
 	}
 
 	public Play(Integer playId, PlayGroup playGroup, String palyName,
-			Short palyEnabled, BigDecimal oddsMax, Integer palyMin,
+			Short palyEnabled, String oddsMax, BigDecimal palyMin,
 			Integer singleMax, Integer singleItemMax) {
 		this.playId = playId;
 		this.playGroup = playGroup;
@@ -70,21 +70,13 @@ public class Play implements java.io.Serializable {
 		this.palyEnabled = palyEnabled;
 	}
 
-	public BigDecimal getOddsMax() {
-		return this.oddsMax;
-	}
+	public String getOddsMax() { return oddsMax; }
 
-	public void setOddsMax(BigDecimal oddsMax) {
-		this.oddsMax = oddsMax;
-	}
+	public void setOddsMax(String oddsMax) { this.oddsMax = oddsMax; }
 
-	public Integer getPalyMin() {
-		return this.palyMin;
-	}
+	public BigDecimal getPalyMin() { return palyMin; }
 
-	public void setPalyMin(Integer palyMin) {
-		this.palyMin = palyMin;
-	}
+	public void setPalyMin(BigDecimal palyMin) { this.palyMin = palyMin; }
 
 	public Integer getSingleMax() {
 		return this.singleMax;

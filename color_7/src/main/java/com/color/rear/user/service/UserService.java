@@ -8,9 +8,14 @@
 package com.color.rear.user.service;
 
 import com.color.common.dto.HonorLimitDto;
+import com.color.common.dto.PlayDto;
+import com.color.common.dto.PlayGroupDto;
 import com.color.common.dto.UserDto;
 import com.color.common.utils.JsonBean;
 import com.color.domain.User;
+
+import java.util.List;
+
 
 /**
  * @ClassName: UserService
@@ -33,5 +38,9 @@ public interface UserService {
 	public User getUser(UserDto userDto);
 	
 	public HonorLimitDto getHonorByUser(Integer userId);
+
+    public List<PlayDto> getPlayData();
+
+    public List<PlayDto> getPlayGroupData();
 
 }

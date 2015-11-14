@@ -1,8 +1,11 @@
 package com.color.rear.user.action;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.color.common.dto.PlayDto;
+import com.color.common.dto.PlayGroupDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.color.common.action.ActionSupper;
@@ -54,7 +57,11 @@ public class AdminAction extends ActionSupper {
 		UserDto userDto = GetRequestUtil.getLoginUserDto();
 		ActionContext action = ActionContext.getContext();
 		HonorLimitDto h = userServiceF.getHonorByUser(userDto.getUserId());
+		List<PlayDto> li = userServiceF.getPlayData();
+		List<PlayDto> lig = userServiceF.getPlayGroupData();
 		action.put("user", h);
+		action.put("lp",li);
+		action.put("lpg",lig);
 		return RearPageUtil.SETUP_PAGE;
 	}
 	

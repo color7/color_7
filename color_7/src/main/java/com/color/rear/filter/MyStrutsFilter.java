@@ -22,7 +22,7 @@ public class MyStrutsFilter extends StrutsPrepareAndExecuteFilter {
 		String url = request.getRequestURI();
 		if (url != null) {
 			if (url.equals(request.getContextPath()+"/")) {
-				response.sendRedirect("rear/login.jsp");
+				response.sendRedirect("login.action");
 			} else {
 				super.doFilter(req, res, chain);
 			}

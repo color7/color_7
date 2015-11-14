@@ -43,9 +43,9 @@
 
 	<!-- 导入struts配置文件 -->
 	<!-- <include file="strutsconfig/hello.xml" /> -->
-	<include file="strutsconfig/struts-front.xml"></include>
-	<include file="strutsconfig/struts-front-json.xml"></include>
-	<include file="strutsconfig/struts-rear.xml"></include>
-	<include file="strutsconfig/struts-rear-json.xml"></include>
+	<include file="strutsconfig/struts-front.xml"/>
+	<include file="strutsconfig/struts-front-json.xml"/>
+	<include file="strutsconfig/struts-rear.xml"/>
+	<include file="strutsconfig/struts-rear-json.xml"/>
 
 </struts>
