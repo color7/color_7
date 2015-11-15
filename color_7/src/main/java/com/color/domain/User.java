@@ -29,6 +29,9 @@ public class User implements java.io.Serializable {
 	private BigDecimal percentMax;
 	private Integer parentUserId;
 	private String userLevel;
+	private Integer updateBy;
+	private Date updateTime;
+	private String agentIp;
 
 	public User() {
 	}
@@ -155,6 +158,30 @@ public class User implements java.io.Serializable {
 
 	public void setUserLevel(String userLevel) {
 		this.userLevel = userLevel;
+	}
+
+	public Integer getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(Integer updateBy) {
+		this.updateBy = updateBy;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public String getAgentIp() {
+		return agentIp;
+	}
+
+	public void setAgentIp(String agentIp) {
+		this.agentIp = agentIp;
 	}
 
 }

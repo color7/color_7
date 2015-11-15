@@ -40,15 +40,15 @@ public class JuniorDto implements Serializable {
 	/**
 	 * 修改时间
 	 * */
-	private Date modifyTime;
+	private Date updateTime;
 	/**
-	 * 修改者
+	 * 修改人
 	 * */
-	private String modifyByUser;
+	private String updateBy;
 	/**
-	 * ip
+	 * 代理ip
 	 * */
-	private String ip;
+	private String agentIp;
 
 	/**
 	 * 状态
@@ -95,28 +95,28 @@ public class JuniorDto implements Serializable {
 		this.honorLimitMax = honorLimitMax;
 	}
 
-	public Date getModifyTime() {
-		return modifyTime;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setModifyTime(Date modifyTime) {
-		this.modifyTime = modifyTime;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
-	public String getModifyByUser() {
-		return modifyByUser;
+	public String getUpdateBy() {
+		return updateBy;
 	}
 
-	public void setModifyByUser(String modifyByUser) {
-		this.modifyByUser = modifyByUser;
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
 	}
 
-	public String getIp() {
-		return ip;
+	public String getAgentIp() {
+		return agentIp;
 	}
 
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setAgentIp(String agentIp) {
+		this.agentIp = agentIp;
 	}
 
 	public Short getUserStatus() {

@@ -17,6 +17,6 @@ public interface JuniorDao extends BaseDao<User> {
 	 * @param userId
 	 * @return
 	 */
-	public List<JuniorDto> getAllJuniorByUserId(int userId);
+	public List<User> getAllJuniorByUserId(int userId);
 
 }

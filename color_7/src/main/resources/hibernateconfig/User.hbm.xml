@@ -70,5 +70,20 @@
 				<comment>层次</comment>
 			</column>
 		</property>
+		<property name="updateBy" type="java.lang.Integer">
+			<column name="update_by">
+				<comment>修改人ID</comment>
+			</column>
+		</property>
+		<property name="updateTime" type="timestamp">
+			<column name="update_time" length="19">
+				<comment>修改时间</comment>
+			</column>
+		</property>
+		<property name="agentIp" type="string">
+			<column name="agent_ip">
+				<comment>代理ip</comment>
+			</column>
+		</property>
 	</class>
 </hibernate-mapping>
