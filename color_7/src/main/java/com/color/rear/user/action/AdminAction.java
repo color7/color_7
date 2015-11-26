@@ -6,12 +6,14 @@ import java.util.Map;
 
 import com.color.common.dto.PlayDto;
 import com.color.common.dto.PlayGroupDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.color.common.action.ActionSupper;
 import com.color.common.dto.HonorLimitDto;
 import com.color.common.dto.UserDto;
 import com.color.common.utils.GetRequestUtil;
+import com.color.common.utils.JsonBean;
 import com.color.common.utils.RearPageUtil;
 import com.color.rear.user.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
@@ -32,6 +34,8 @@ import com.opensymphony.xwork2.ActionContext;
  --------------------------------------------------------------------------------------
  */
 public class AdminAction extends ActionSupper {
+	
+	private UserDto userDto;
 	
 	private UserService userServiceF;
 	
@@ -79,6 +83,20 @@ public class AdminAction extends ActionSupper {
 		setResponseJson(map);
 		return "success";
 	}
+	
+	/**
+	 * @Title: userInfoAUUser
+	 * @Description: (响应添加/修改操作)
+	 * @return
+	 * @Author: linrunshu
+	 */
+	public String userInfoAUUser(){
+		JsonBean jb = userServiceF.addAndUpdateUser(userDto);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("returnJson", jb);
+		setResponseJson(map);
+		return "success";
+	}
 
 	public UserService getUserServiceF() {
 		return userServiceF;
@@ -95,6 +113,14 @@ public class AdminAction extends ActionSupper {
 
 	public void setResponseJson(Map<String, Object> responseJson) {
 		this.responseJson = responseJson;
+	}
+
+	public UserDto getUserDto() {
+		return userDto;
+	}
+
+	public void setUserDto(UserDto userDto) {
+		this.userDto = userDto;
 	}
 
 }

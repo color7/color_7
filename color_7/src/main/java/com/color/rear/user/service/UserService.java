@@ -42,5 +42,9 @@ public interface UserService {
     public List<PlayDto> getPlayData();
 
     public List<PlayDto> getPlayGroupData();
+    
+    public User loadTbUserByParams(UserDto userDto);
+    
+    public JsonBean addAndUpdateUser(UserDto userDto);
 
 }

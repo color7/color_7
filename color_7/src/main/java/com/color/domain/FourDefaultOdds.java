@@ -19,7 +19,7 @@ public class FourDefaultOdds implements java.io.Serializable {
 	private Integer playId;
 	private String playName;
 	private BigDecimal defaultOdds;
-	private SortedSet<FourNumber> fourNumbers = new TreeSet<>();
+	private SortedSet<FourNumber> fourNumbers = new TreeSet<FourNumber>();
 
 	public FourDefaultOdds() {
 	}

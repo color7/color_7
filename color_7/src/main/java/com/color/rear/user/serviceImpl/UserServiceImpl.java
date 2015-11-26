@@ -6,6 +6,7 @@ import com.color.common.dto.PlayDto;
 import com.color.common.dto.PlayGroupDto;
 import com.color.domain.Play;
 import com.color.domain.PlayGroup;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -21,12 +22,15 @@ import com.color.domain.User;
 import com.color.rear.user.service.UserService;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: UserServiceImpl
  * @Description: (这里用一句话描述这个类的作用)
- * @author 林润树
+ * @author linrunshu
  * @ApplicationType(应用程序类/WEB类/公共工具类)：(如：公共工具类)
  * 应用程序类：指有main()方法的类
  * WEB类：指Web访问使用的类
@@ -34,7 +38,7 @@ import java.util.List;
  --------------------------------------------------------------------------------------
  * History：
    Date			Author			Version			Modifications
-   2015年11月4日   @callsure		V01.00.000		根据需求XXX，新建类
+   2015年11月4日   linrunshu		V01.00.000		根据需求XXX，新建类
 
  --------------------------------------------------------------------------------------
  */
@@ -117,6 +121,63 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return list;
+	}
+	
+	/**
+	 * @Title: addAndUpdateUser
+	 * @Description: (添加、修改用户)
+	 * @param userDto
+	 * @return
+	 * @Author: linrunshu
+	 */
+	@Override
+	public JsonBean addAndUpdateUser(UserDto userDto){
+		JsonBean jb = new JsonBean();
+		User user = null;
+		jb.setSuccess(false);
+		jb.setMsg("发生错误！");
+		jb.setObj(userDto);
+		if(userDto.getUserId() == null){
+			//添加
+			User u = loadTbUserByParams(userDto);
+			if(u == null){
+				user = new User();
+				BeanUtils.copyProperties(userDto, u);
+				user.setCreateTime(new Date());
+				user.setIsFirstLogin((short) 0);
+				user.setAccountType((short) 0);
+				user.setUserStatus((short) 1);
+			}
+			else{
+				jb.setMsg("该账号已存在！");
+				return jb;
+			}
+		}
+		else{
+			//修改
+			
+		}
+		userDao.saveOrUpdate(user);
+		BeanUtils.copyProperties(user, userDto);
+		userDto.setUserPassword("");
+		jb.setObj(userDto);
+		jb.setSuccess(true);
+		return jb;
+	}
+	
+	/**
+	 * @Title: loadTbUserByParams
+	 * @Description: (查询用户名是否存在)
+	 * @param userDto
+	 * @return
+	 * @Author: linrunshu
+	 */
+	@Override
+	public User loadTbUserByParams(UserDto userDto){
+		String hql = "from User where userAccount = :userAccount";
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("userAccount", userDto.getUserAccount());
+		return userDao.get(hql,params);
 	}
 
 	public UserDao getUserDao() {

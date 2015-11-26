@@ -27,7 +27,7 @@ public class User implements java.io.Serializable {
 	 */
 	private String userAccount;
 	/**
-	 * 0:非账号
+	 * 0:非子账号
 	 * 1:子账号
 	 */
 	private Short accountType;
