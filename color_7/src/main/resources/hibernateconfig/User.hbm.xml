@@ -3,7 +3,8 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-11-2 0:52:27 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-	<class name="com.color.domain.User" table="t_user" catalog="sevencolor">
+	<class name="com.color.domain.User" table="t_user" catalog="sevencolor"
+		lazy="false">
 		<id name="userId" type="java.lang.Integer">
 			<column name="user_id">
 				<comment>用户ID</comment>
@@ -60,21 +61,15 @@
 				<comment>占成上限(拦货上限)</comment>
 			</column>
 		</property>
-		<property name="parentUserId" type="java.lang.Integer">
-			<column name="parent_user_id">
-				<comment>上级ID</comment>
-			</column>
-		</property>
+		<many-to-one name="parent" class="com.color.domain.User"
+			column="parent_user_id" not-found="ignore"></many-to-one>
 		<property name="userLevel" type="string">
 			<column name="user_level">
 				<comment>层次</comment>
 			</column>
 		</property>
-		<property name="updateBy" type="java.lang.Integer">
-			<column name="update_by">
-				<comment>修改人ID</comment>
-			</column>
-		</property>
+		<many-to-one name="updateBy" class="com.color.domain.User"
+			column="update_by" not-found="ignore"></many-to-one>
 		<property name="updateTime" type="timestamp">
 			<column name="update_time" length="19">
 				<comment>修改时间</comment>
@@ -85,5 +80,7 @@
 				<comment>代理ip</comment>
 			</column>
 		</property>
+		<many-to-one name="honorLimit" class="com.color.domain.HonorLimit"
+			column="honor_limit_id"></many-to-one>
 	</class>
 </hibernate-mapping>

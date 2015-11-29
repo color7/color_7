@@ -2,7 +2,6 @@ package com.color.common.dao;
 
 import java.util.List;
 
-import com.color.common.dto.JuniorDto;
 import com.color.domain.User;
 
 /**
@@ -13,10 +12,26 @@ import com.color.domain.User;
  */
 public interface JuniorDao extends BaseDao<User> {
 	/**
-	 * 获取当前用户的直属下级用户的基本信息
+	 * 获取当前用户的全部下级用户
+	 * 
 	 * @param userId
 	 * @return
 	 */
-	public List<User> getAllJuniorByUserId(int userId);
+	public List<User> getAllById(int userId);
+
+	/**
+	 * 根据id获取用户实体
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public User getUserById(int userId);
+
+	/**
+	 * 新增下级
+	 * 
+	 * @param user
+	 */
+	public void addJunior(User user);
 
 }

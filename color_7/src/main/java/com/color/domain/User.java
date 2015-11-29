@@ -27,37 +27,18 @@ public class User implements java.io.Serializable {
 	private String userMobile;
 	private Short isFirstLogin;
 	private BigDecimal percentMax;
-	private Integer parentUserId;
+	private User parent;
 	private String userLevel;
-	private Integer updateBy;
+	private User updateBy;
 	private Date updateTime;
 	private String agentIp;
+	private HonorLimit honorLimit;
 
 	public User() {
 	}
 
-	public User(Integer userId, Integer uid, String codeName,
-			String userAccount, Short accountType, String userPassword,
-			Date createTime, Short userStatus, String userMobile,
-			Short isFirstLogin, BigDecimal percentMax, Integer parentUserId,
-			String userLevel) {
-		this.userId = userId;
-		this.uid = uid;
-		this.codeName = codeName;
-		this.userAccount = userAccount;
-		this.accountType = accountType;
-		this.userPassword = userPassword;
-		this.createTime = createTime;
-		this.userStatus = userStatus;
-		this.userMobile = userMobile;
-		this.isFirstLogin = isFirstLogin;
-		this.percentMax = percentMax;
-		this.parentUserId = parentUserId;
-		this.userLevel = userLevel;
-	}
-
 	public Integer getUserId() {
-		return this.userId;
+		return userId;
 	}
 
 	public void setUserId(Integer userId) {
@@ -65,7 +46,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public Integer getUid() {
-		return this.uid;
+		return uid;
 	}
 
 	public void setUid(Integer uid) {
@@ -73,7 +54,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public String getCodeName() {
-		return this.codeName;
+		return codeName;
 	}
 
 	public void setCodeName(String codeName) {
@@ -81,7 +62,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public String getUserAccount() {
-		return this.userAccount;
+		return userAccount;
 	}
 
 	public void setUserAccount(String userAccount) {
@@ -89,7 +70,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public Short getAccountType() {
-		return this.accountType;
+		return accountType;
 	}
 
 	public void setAccountType(Short accountType) {
@@ -97,7 +78,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public String getUserPassword() {
-		return this.userPassword;
+		return userPassword;
 	}
 
 	public void setUserPassword(String userPassword) {
@@ -105,7 +86,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public Date getCreateTime() {
-		return this.createTime;
+		return createTime;
 	}
 
 	public void setCreateTime(Date createTime) {
@@ -113,7 +94,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public Short getUserStatus() {
-		return this.userStatus;
+		return userStatus;
 	}
 
 	public void setUserStatus(Short userStatus) {
@@ -121,7 +102,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public String getUserMobile() {
-		return this.userMobile;
+		return userMobile;
 	}
 
 	public void setUserMobile(String userMobile) {
@@ -129,7 +110,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public Short getIsFirstLogin() {
-		return this.isFirstLogin;
+		return isFirstLogin;
 	}
 
 	public void setIsFirstLogin(Short isFirstLogin) {
@@ -137,34 +118,34 @@ public class User implements java.io.Serializable {
 	}
 
 	public BigDecimal getPercentMax() {
-		return this.percentMax;
+		return percentMax;
 	}
 
 	public void setPercentMax(BigDecimal percentMax) {
 		this.percentMax = percentMax;
 	}
 
-	public Integer getParentUserId() {
-		return this.parentUserId;
+	public User getParent() {
+		return parent;
 	}
 
-	public void setParentUserId(Integer parentUserId) {
-		this.parentUserId = parentUserId;
+	public void setParent(User parent) {
+		this.parent = parent;
 	}
 
 	public String getUserLevel() {
-		return this.userLevel;
+		return userLevel;
 	}
 
 	public void setUserLevel(String userLevel) {
 		this.userLevel = userLevel;
 	}
 
-	public Integer getUpdateBy() {
+	public User getUpdateBy() {
 		return updateBy;
 	}
 
-	public void setUpdateBy(Integer updateBy) {
+	public void setUpdateBy(User updateBy) {
 		this.updateBy = updateBy;
 	}
 
@@ -182,6 +163,14 @@ public class User implements java.io.Serializable {
 
 	public void setAgentIp(String agentIp) {
 		this.agentIp = agentIp;
+	}
+
+	public HonorLimit getHonorLimit() {
+		return honorLimit;
+	}
+
+	public void setHonorLimit(HonorLimit honorLimit) {
+		this.honorLimit = honorLimit;
 	}
 
 }

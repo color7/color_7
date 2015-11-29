@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.color.domain.User;
+
 /**
  * 下级dto
  * 
@@ -125,6 +127,25 @@ public class JuniorDto implements Serializable {
 
 	public void setUserStatus(Short userStatus) {
 		this.userStatus = userStatus;
+	}
+
+	/**
+	 * 构建JuniorDto
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public static JuniorDto builder(User user) {
+		JuniorDto juniorDto = new JuniorDto();
+		juniorDto.setUid(user.getUid());
+		juniorDto.setUserId(user.getUserId());
+		juniorDto.setUserAccount(user.getUserAccount());
+		juniorDto.setCodeName(user.getCodeName());
+		juniorDto.setHonorLimitMax(user.getHonorLimit().getHonorLimitMax());
+		juniorDto.setUpdateTime(user.getUpdateTime());
+		juniorDto.setUpdateBy(user.getUpdateBy().getUserAccount());
+		juniorDto.setAgentIp(user.getAgentIp());
+		return juniorDto;
 	}
 
 }

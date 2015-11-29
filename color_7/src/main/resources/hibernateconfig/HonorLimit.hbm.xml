@@ -26,11 +26,13 @@
 			</column>
 		</property>
 		<many-to-one name="user" class="com.color.domain.User"
-			insert="false" update="false" foreign-key="null" index="honor_limit_user_id_idx">
+			insert="false" update="false" foreign-key="null" index="honor_limit_user_id_idx"
+			not-found="ignore">
 			<column name="user_id" />
 		</many-to-one>
 		<many-to-one name="parent" class="com.color.domain.User"
-			insert="false" update="false" foreign-key="null" index="honor_limit_parent_id_idx">
+			insert="false" update="false" foreign-key="null" index="honor_limit_parent_id_idx"
+			not-found="ignore">
 			<column name="parent_user_id" />
 		</many-to-one>
 
