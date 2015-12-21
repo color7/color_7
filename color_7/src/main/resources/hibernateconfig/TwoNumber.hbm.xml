@@ -33,5 +33,10 @@
 				<comment>默认赔率</comment>
 			</column>
 		</property>
+		<property name="nono" type="string" update="true">
+			<column name="nono" length="11">
+				<comment>序号</comment>
+			</column>
+		</property>
 	</class>
 </hibernate-mapping>

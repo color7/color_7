@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<package name="loginJsonPage" extends="ajax" namespace="/json">
+	<package name="loginJsonPage" extends="ajax" namespace="/jsonr">
 		<!-- 登录信息返回 -->
 		<action name="loginAdmin" class="com.color.rear.user.action.LoginAction" method="userLogin">
 			<result name="success" type="json">

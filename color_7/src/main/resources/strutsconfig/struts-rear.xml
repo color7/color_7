@@ -18,5 +18,9 @@
 		<action name="gotosetUp" class="com.color.rear.user.action.AdminAction" method="setUp">
 			<result name="setup">/rear/membersInfoAdmin.jsp</result>
 		</action>
+		
+		<action name="gotoLevelManageMent" class="com.color.rear.levelManagement.action.LevelManagementAction" method="levelManagementPage">
+			<result name="levelManagement">/rear/levelManagement.jsp</result>
+		</action>
 	</package>
 </struts>

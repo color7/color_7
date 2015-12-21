@@ -16,51 +16,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script language="javascript" src="./rear/javascript/jquery.jcryption.3.1.0.js?ver=1"></script>
 <script language="javascript" src="./rear/javascript/loginfrm.js?ver=1"></script>
 <script type="text/javascript">
-<!--
+function login_admin(){
+	$.ajax({
+		type : "post",
+		url : "<%=path%>/jsonr/loginAdmin.action",
+		data: {"userAccount":$("input[name='userAccount']").val(),
+				 "userPassword":$("input[name='userPassword']").val()},
+		dataType : "json",
+		success : function(data) {
+			var obj = eval("("+data.returnJson+")");
+			if (obj.status==0) {
+				window.location.href="<%=path%>/gotoIndexPage.action";
+			}else{
+				alert("用户不存在或密码错误！")
+			}
+         }
+ 	});
+}
 function finalcheck(){
-	if($("#login_admin").attr("disabled")=="disabled")return false;
-	if(document.loginfrm.admin_username368109810.value==""){
+	if($("input[name='userAccount']").val()==""){
 		alert("Please fill out the account！");
-		document.loginfrm.admin_username368109810.focus();
+		$("input[name='userAccount']").focus();
 		return false;
-	}else if(document.loginfrm.admin_password368109810.value==""){
+	}else if($("input[name='userPassword']").val()==""){
 		alert("Please fill in password！");
-		document.loginfrm.admin_password368109810.focus();
+		$("input[name='userPassword']").focus();
 		return false;
 	}
 	
-	return onLogin("368109810",2);
-}
-
-function redirect(url) {
-	window.location.replace(url);
+	login_admin();
 }
 function send(event){   
 	if(event.keyCode==13) { 
 		return finalcheck();
 	}   
 }
-if(self.parent.frames.length != 0) {
-	self.parent.location=document.location;
-}
--->
 $(document).ready(function(){
 	$("#login_admin").click(function(){
-		$.ajax({
-			type : "post",
-			url : "<%=path%>/json/loginAdmin.action",
-			data: {"userAccount":$("input[name='userAccount']").val(),
-					 "userPassword":$("input[name='userPassword']").val()},
-			dataType : "json",
-			success : function(data) {
-				var obj = eval("("+data.returnJson+")");
-				if (obj.status==0) {
-					window.location.href="<%=path%>/gotoIndexPage.action";
-				}else{
-					alert("用户不存在或密码错误！")
-				}
-	         }
-	 });
+		login_admin();
 	});
 })
 
@@ -103,7 +96,7 @@ $(document).ready(function(){
 		<td background="./rear/images/login_13/2_10.gif"></td>
 	</tr>
 </tbody></table>
-</form><script type="text/javascript">setTimeout("document.loginfrm.admin_username368109810.focus();",200);</script></td></tr></tbody></table>
+</form><script type="text/javascript">setTimeout("$("input[name='userAccount']").focus();",200);</script></td></tr></tbody></table>
 
 
 

@@ -1,4 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html><head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" id="css" href="./admincg/images/v2_default_5/members.css">
@@ -35,6 +39,7 @@
 	</tbody></table>
 	<script src="./admincg/javascript/common.js" type="text/javascript"></script>
 	<script src="./admincg/javascript/showorderhtml.js" type="text/javascript"></script>
+	<script src="./admincg/javascript/frank.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	<!--
     var _ordernum = 10;
@@ -46,7 +51,11 @@
 	var _cacheclass = {'1':{'id':'1','parentid':'0','classname':'二定位','leveid':'0','money_least':'1','franklimithig':'95','franklimithigshow':'95','xfrank_limit':'0','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'4':{'id':'4','parentid':'0','classname':'三定位','leveid':'0','money_least':'0.1','franklimithig':'930','franklimithigshow':'930','xfrank_limit':'0','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'5':{'id':'5','parentid':'0','classname':'四定位','leveid':'0','money_least':'0.1','franklimithig':'9200','franklimithigshow':'9200','xfrank_limit':'3000','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'6':{'id':'6','parentid':'0','classname':'二字现','leveid':'0','money_least':'1','franklimithig':'9.5','franklimithigshow':'9.5','xfrank_limit':'3/5','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'7':{'id':'7','parentid':'0','classname':'三字现','leveid':'0','money_least':'1','franklimithig':'46','franklimithigshow':'46','xfrank_limit':'15/20/30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'102':{'id':'102','parentid':'1','classname':'口口XX','leveid':'1','money_least':'1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'101':{'id':'101','parentid':'1','classname':'口X口X','leveid':'1','money_least':'1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'100':{'id':'100','parentid':'1','classname':'口XX口','leveid':'1','money_least':'1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'98':{'id':'98','parentid':'1','classname':'X口X口','leveid':'1','money_least':'1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'99':{'id':'99','parentid':'1','classname':'X口口X','leveid':'1','money_least':'1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'106':{'id':'106','parentid':'4','classname':'口口口X','leveid':'1','money_least':'0.1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'300','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'105':{'id':'105','parentid':'4','classname':'口口X口','leveid':'1','money_least':'0.1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'300','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'104':{'id':'104','parentid':'4','classname':'口X口口','leveid':'1','money_least':'0.1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'300','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'103':{'id':'103','parentid':'4','classname':'X口口口','leveid':'1','money_least':'0.1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'300','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'97':{'id':'97','parentid':'1','classname':'XX口口','leveid':'1','money_least':'1','franklimithig':'0','franklimithigshow':'0','xfrank_limit':'30','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'},'107':{'id':'107','parentid':'0','classname':'四字现','leveid':'0','money_least':'1','franklimithig':'380','franklimithigshow':'380','xfrank_limit':'100/200/300/100','moneystatchzk':'0','moneystatzk':'0','moneystathszk':'0'}};
 	var _ziyou = "39080_15122";
     var OldOrder=[];
-	$("showorderhtml").innerHTML=showhtml({"j":[],"d":1445052924,"t":1500,"m":1});
+    ajax_f("<%=path%>/jsonf/orderList.action","",function(str){
+    	console.info(str);
+    	$("showorderhtml").innerHTML=showhtml(str);
+    });
+    //$("showorderhtml").innerHTML=showhtml({"j":[],"d":1445052924,"t":1500,"m":1});
 	//-->
 	</script>
 	<table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td height="6"></td></tr><tr></tr></tbody></table>
@@ -76,7 +85,6 @@
 		</tr><tr>
 	</tr></tbody></table>
 
-	<script src="./admincg/javascript/frank.js" type="text/javascript"></script>
 
 	<script language="JavaScript">
 	<!--		

@@ -4,12 +4,22 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<package name="frontPackage" extends="common" namespace="/">
+	<package name="frontLoginPackage" extends="common" namespace="/">
 		<!-- 前台界面登录前可以进行的action操作 -->
-		<!-- <action name="index" class="zqu.neuedu.front.action.IndexAction" method="indexPage">
-			主页
-			<result name="index">/WEB-INF/front/index.jsp</result>
-		</action> -->
+		<action name="loginFront" class="com.color.front.user.action.LoginAction" method="loginFrontPage">
+			<result name="login">/front/login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="frontPackage" extends="common" namespace="/front">
+		<!-- 前台界面登录前可以进行的action操作 -->
+		<action name="goToIndex" class="com.color.common.action.IndexAction" method="indexTo">
+			<result name="index">/front/index.jsp</result>
+		</action>
+		
+		<action name="goTwoWord" class="com.color.front.twoNumber.action.TwoNumberAction" method="twoNumberView">
+			<result name="twoNumber">/front/twoWordSetTwo.jsp</result>
+		</action>
 	</package>
 	
 </struts>

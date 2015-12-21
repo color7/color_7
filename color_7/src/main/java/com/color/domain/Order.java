@@ -3,8 +3,8 @@ package com.color.domain;
 // Generated 2015-11-2 0:52:26 by Hibernate Tools 4.0.0
 
 import java.util.Date;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 订单实体
@@ -23,14 +23,15 @@ public class Order implements java.io.Serializable {
 	private String betPath;
 	private String issueNumber;
 	private Date orderTime;
-	private SortedSet<OrderDetail> orderDetails = new TreeSet<OrderDetail>();
+	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>();
+	private String orderNumerical;
 
 	public Order() {
 	}
 
 	public Order(Integer orderId, User user, Integer playId,
 			Integer playGroupId, String ip, String betPath, String issueNumber,
-			Date orderTime) {
+			Date orderTime,String orderNumerical) {
 		this.orderId = orderId;
 		this.user = user;
 		this.playId = playId;
@@ -39,6 +40,7 @@ public class Order implements java.io.Serializable {
 		this.betPath = betPath;
 		this.issueNumber = issueNumber;
 		this.orderTime = orderTime;
+		this.orderNumerical = orderNumerical;
 	}
 
 	public Integer getOrderId() {
@@ -105,12 +107,20 @@ public class Order implements java.io.Serializable {
 		this.orderTime = orderTime;
 	}
 
-	public SortedSet<OrderDetail> getOrderDetails() {
+	public Set<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
 
-	public void setOrderDetails(SortedSet<OrderDetail> orderDetails) {
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
+	}
+
+	public String getOrderNumerical() {
+		return orderNumerical;
+	}
+
+	public void setOrderNumerical(String orderNumerical) {
+		this.orderNumerical = orderNumerical;
 	}
 
 }

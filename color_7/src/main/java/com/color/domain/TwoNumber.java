@@ -18,17 +18,19 @@ public class TwoNumber implements java.io.Serializable {
 	private String numberName;
 	private BigDecimal currentOdds;
 	private BigDecimal defaultOdds;
+	private String nono;
 
 	public TwoNumber() {
 	}
 
 	public TwoNumber(Integer twoNumberId, TwoDefaultOdds twoDefaultOdds,
-			String numberName, BigDecimal currentOdds, BigDecimal defaultOdds) {
+			String numberName, BigDecimal currentOdds, BigDecimal defaultOdds, String nono) {
 		this.twoNumberId = twoNumberId;
 		this.twoDefaultOdds = twoDefaultOdds;
 		this.numberName = numberName;
 		this.currentOdds = currentOdds;
 		this.defaultOdds = defaultOdds;
+		this.nono = nono;
 	}
 
 	public Integer getTwoNumberId() {
@@ -69,6 +71,14 @@ public class TwoNumber implements java.io.Serializable {
 
 	public void setDefaultOdds(BigDecimal defaultOdds) {
 		this.defaultOdds = defaultOdds;
+	}
+
+	public String getNono() {
+		return nono;
+	}
+
+	public void setNono(String nono) {
+		this.nono = nono;
 	}
 
 }

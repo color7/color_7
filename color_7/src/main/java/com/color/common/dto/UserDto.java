@@ -26,6 +26,9 @@ public class UserDto implements Serializable {
 	private Integer parentUserId;
 	private String userLevel;
 	private String userEmail;
+	private Integer honorLimitMax;
+	private Integer residueHonorLimit;
+	private Integer usedHonorLimit;
 
 	public UserDto() {
 	}
@@ -161,6 +164,30 @@ public class UserDto implements Serializable {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+
+	public Integer getHonorLimitMax() {
+		return honorLimitMax;
+	}
+
+	public void setHonorLimitMax(Integer honorLimitMax) {
+		this.honorLimitMax = honorLimitMax;
+	}
+
+	public Integer getResidueHonorLimit() {
+		return residueHonorLimit;
+	}
+
+	public void setResidueHonorLimit(Integer residueHonorLimit) {
+		this.residueHonorLimit = residueHonorLimit;
+	}
+
+	public Integer getUsedHonorLimit() {
+		return usedHonorLimit;
+	}
+
+	public void setUsedHonorLimit(Integer usedHonorLimit) {
+		this.usedHonorLimit = usedHonorLimit;
 	}
 
 }

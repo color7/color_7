@@ -20,9 +20,11 @@ public class OrderDetail implements java.io.Serializable {
 	private BigDecimal orderOdds;
 	private BigDecimal orderMoney;
 	private BigDecimal winningMoney;
+	//1:下注成功   0:退码
 	private Short orderStatus;
 	private Date cancelTime;
 	private BigDecimal backWater;
+	//1中奖   0:不中奖
 	private Short isWinning;
 
 	public OrderDetail() {

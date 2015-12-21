@@ -4,12 +4,30 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<package name="frontJsonPackage" extends="ajax" namespace="/">
-		<!-- 管理员列表Ajax获取数据 -->
-		<!-- <action name="user_login" class="zqu.neuedu.front.action.UserAction" method="userLogin">
+	<package name="frontJsonPackage" extends="ajax" namespace="/jsonf">
+		<!-- 登录信息返回 -->
+		<action name="loginIn" class="com.color.front.user.action.LoginAction" method="userFrontLogin">
 			<result name="success" type="json">
 				<param name="root">responseJson</param>
 			</result>
-		</action> -->
+		</action>
+		<!-- 二字定 -->
+		<action name="twoNumberList" class="com.color.front.twoNumber.action.TwoNumberAction" method="TwoNumberList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="selectTwoNumber" class="com.color.front.twoNumber.action.TwoNumberAction" method="saveOrUpdateTwoNumber">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		
+		<!-- 订单 -->
+		<action name="orderList" class="com.color.front.order.action.OrderAction" method="OrderDetalList">
+			<result name="success" type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
 	</package>
 </struts>

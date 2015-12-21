@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by callsure on 2015/11/12.
  */
-@Repository
+@Repository("playGroupDao")
 public class PlayGroupDaoImpl extends BaseDaoImpl<PlayGroup> implements PlayGroupDao {
 }

@@ -7,14 +7,13 @@
  */
 package com.color.rear.user.service;
 
+import java.util.List;
+
 import com.color.common.dto.HonorLimitDto;
 import com.color.common.dto.PlayDto;
-import com.color.common.dto.PlayGroupDto;
 import com.color.common.dto.UserDto;
 import com.color.common.utils.JsonBean;
 import com.color.domain.User;
-
-import java.util.List;
 
 
 /**
@@ -33,18 +32,19 @@ import java.util.List;
  --------------------------------------------------------------------------------------
  */
 public interface UserService {
-	public JsonBean loginUser(UserDto userDto);
 	
-	public User getUser(UserDto userDto);
+	public JsonBean loginUser(UserDto paramUserDto);
+
+	public User getUser(UserDto paramUserDto);
 	
-	public HonorLimitDto getHonorByUser(Integer userId);
-
-    public List<PlayDto> getPlayData();
-
-    public List<PlayDto> getPlayGroupData();
-    
-    public User loadTbUserByParams(UserDto userDto);
-    
-    public JsonBean addAndUpdateUser(UserDto userDto);
+	public HonorLimitDto getHonorByUser(Integer paramInteger);
+	
+	public List<PlayDto> getPlayData();
+	
+	public List<PlayDto> getPlayGroupData();
+	
+	public User loadTbUserByParams(UserDto paramUserDto);
+	
+	public JsonBean addAndUpdateUser(UserDto paramUserDto);
 
 }

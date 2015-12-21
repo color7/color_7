@@ -14,6 +14,7 @@ function writeObj(obj){
     alert(description); 
 } 
 function showhtml(json){
+	var obj = eval("("+json+")");
 	_timestamp = json['d'];
 	_tuimatime = json['t'];
 	_tuimamode = json['m'];

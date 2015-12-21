@@ -23,6 +23,14 @@ public class TwoDefaultOdds implements java.io.Serializable {
 
 	public TwoDefaultOdds() {
 	}
+	
+
+	public TwoDefaultOdds(Integer twoDefaultOddsId) {
+		super();
+		this.twoDefaultOddsId = twoDefaultOddsId;
+	}
+
+
 
 	public TwoDefaultOdds(Integer twoDefaultOddsId, Integer playId,
 			String playName, BigDecimal defaultOdds) {

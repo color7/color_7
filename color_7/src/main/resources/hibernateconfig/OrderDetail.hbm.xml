@@ -11,7 +11,7 @@
 			<generator class="identity" />
 		</id>
 		<many-to-one name="order" class="com.color.domain.Order"
-			insert="false" update="false" index="orer_detail_order_id_idx"
+			insert="true" update="true" index="orer_detail_order_id_idx"
 			foreign-key="null">
 			<column name="order_id" />
 		</many-to-one>
@@ -41,7 +41,7 @@
 			</column>
 		</property>
 		<property name="cancelTime" type="timestamp">
-			<column name="cancel_time" length="19" not-null="true">
+			<column name="cancel_time" length="19">
 				<comment>退码时间</comment>
 			</column>
 		</property>

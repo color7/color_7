@@ -1,0 +1,34 @@
+div.modal_dialog {position: absolute;top: 0px;left: 0px;width: 99%;height: 99%;text-align:center;margin: 0px;padding: 0px;}
+div.modal_dialog #mdlg_overlay {position: absolute;zoom: 1;filter: alpha(opacity=50);*display: inline;zoom: 1;display:inline-block;top: 0px;left: 0px;width: 100%;height: 100%;background-color: #e0e8e0;opacity: 0.75;}
+div.modal_dialog_body {position: fixed;z-index:100;top: 0px;left: 0px;height:100%;width:100%;}
+.alert_window_box {text-align: center;line-height: 40px;font-size: 12px;font-weight: bold;z-index:999;left:50%;top:50%;
+margin-left:-150px!important;
+margin-top:-60px!important;
+margin-top:0px;
+position:fixed!important;
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+width:392px;
+}
+.alert_border{padding:5px;background:rgba(192,181,155,.6);background:#c0b59b\9;filter:alpha(opacity=60);zoom:1}
+.alert_box{border:1px #f26c4f solid;background:#fff;position: relative;overflow:hidden;zoom:1}
+.alert_box .alert_top{background:url(./tishi_title_bg.gif) 0 0 repeat-x;height:31px;border:1px #ffcd5e solid}
+.alert_top .alert_title{float:left;line-height:32px;font-size:14px;font-weight:bold;color:#fff;margin-left:10px}
+.alert_top .alert_close{float:right;background:url(./tishi_bg.gif) 0 -38px no-repeat;width:21px;height:20px;margin-right:10px;margin-top:6px;cursor:pointer;display:inline}
+.success_close{float:right;background:url(./tishi_bg.gif) -28px -38px no-repeat;width:11px;height:11px;margin-right:7px;margin-top:6px;cursor:pointer;display:inline}
+.alert_box .alert_main{background:#fff;padding:20px 20px 15px}
+.alert_main .icon_error{background:url(./tishi_bg.gif) 20px -100px no-repeat;height:55px;width:90px;float:left}
+.alert_main .icon_success{background:url(./tishi_bg.gif) -80px -100px no-repeat;height:55px;width:90px;float:left}
+.alert_main .icon_tip{background:url(./tishi_bg.gif) -185px -100px no-repeat;height:55px;width:90px;float:left}
+.alert_main .alert_content{float:left;margin-top:5px;padding-bottom:5px;width:250px;color:red}
+.alert_main .success_content{width:180px}
+.alert_main .alert_content h4{font-size:14px}
+.alert_main .alert_content .detail{padding-top:6px;line-height:22px}
+.alert_main .alert_content .f14{font-size:14px}
+.alert_main .alert_content .forget{margin-left:5px}
+.alert_main .alert_sbt{text-align:center;margin-top:5px;}
+.alert_main .alert_sbt .sub_btn{border:1px red solid;background:url(./tishi_bg.gif) -141px -38px;width:77px;height:28px;font-weight:bold;border:0;font-size:14px;cursor:pointer}
+.alert_main .alert_sbt .sub_btn2{background:url(./tishi_bg.gif) -47px -38px;width:87px;height:28px;font-weight:bold;border:0;font-size:14px;cursor:pointer}

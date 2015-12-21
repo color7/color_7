@@ -88,11 +88,11 @@ function setsoon(obj)
 	<tr class="erzi">
 		<td>
 		&nbsp;&nbsp;
-		<a href="#" id="setsoon4" onclick="setsoon(this,4);parent.main.location='twoWordSetTwo.html';return false;" style="color:#fff;" class="meuntop ">二字定</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" id="setsoon1" onclick="setsoon(this,1);parent.main.location='main.html';return false;" style="color:#FF0000;" class="meuntop ">快打</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" id="setsoon2" onclick="setsoon(this,2);parent.main.location='quickSelect.html';return false;" style="color:#fff;" class="meuntop">快选</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" id="setsoon3" onclick="setsoon(this,3);parent.main.location='oddsChangeFour.html';return false;" style="color:#fff;" class="meuntop">赔率变动表</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-		<a href="#" id="setsoon5" onclick="setsoon(this,5);parent.main.location='txtImport.html';return false;" style="color:#fff;" class="meuntop">txt导入</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="#" id="setsoon4" onclick="setsoon(this,4);parent.main.location='goTwoWord.action';return false;" style="color:#fff;" class="meuntop ">二字定</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="#" id="setsoon1" onclick="setsoon(this,1);parent.main.location='main.jsp';return false;" style="color:#FF0000;" class="meuntop ">快打</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="#" id="setsoon2" onclick="setsoon(this,2);parent.main.location='quickSelect.jsp';return false;" style="color:#fff;" class="meuntop">快选</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="#" id="setsoon3" onclick="setsoon(this,3);parent.main.location='oddsChangeFour.jsp';return false;" style="color:#fff;" class="meuntop">赔率变动表</a>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="#" id="setsoon5" onclick="setsoon(this,5);parent.main.location='txtImport.jsp';return false;" style="color:#fff;" class="meuntop">txt导入</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<!--<A HREF="#" id="setsoon6" onclick="setsoon(this,6);parent.main.location='index.php?action=membercommpay';return false;" style="color:#fff;" class=meuntop>补码公司设置</A> &nbsp;&nbsp;&nbsp;&nbsp;--> 
 		&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff;">手机版下注网址:7.133133111.com</font>		</td> 
 	</tr>
