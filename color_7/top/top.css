@@ -5,6 +5,7 @@
     margin-left: 447px;
     width: 51px;
     bottom: 30px;
+    z-index: 2147483647;
 }
 
 .top-feed .to-top{
