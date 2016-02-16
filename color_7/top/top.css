@@ -60,3 +60,7 @@
 .top-feed .icon-over .icon-mask{
 	display:block;
 }
+
+#s_top_feed521 .icon-over{
+    background-image: none;
+}
