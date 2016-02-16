@@ -1,0 +1,58 @@
+.top-feed{
+	visibility: hidden;
+    position: fixed;
+    left: 50%;
+    margin-left: 447px;
+    width: 51px;
+    bottom: 30px;
+}
+
+.top-feed .to-top{
+	position: relative;
+	cursor: pointer;
+	padding-top: 12px;
+	height: 28px;
+	margin: 0 0 6px 10px;
+	background: none;
+	background-image: linear-gradient(rgba(0,0,0,0.3) 0, rgba(0,0,0,0.3) 100%);
+	width: 40px;
+    border: 0;
+}
+
+.top-feed .icon-mask{
+	z-index: 3;
+    font-size: 13px;
+	display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+	background: none;
+	background-image: linear-gradient(rgba(0,0,0,0.5) 0,rgba(0,0,0,0.5) 100%);
+	margin: 0;
+	height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border: 0;
+    color: #fff;
+}
+
+.top-feed .to-top span{
+	display: block;
+    height: 17px;
+    width: 33px;
+    margin: 0 auto;
+    background: url(./topfed_c531aae6.png) no-repeat -1px -10px;
+	background-position: -39px -9px;
+}
+.top-feed .icon-over .icon{
+	background: none;
+	background-position: -39px -9px;
+}
+
+.icon-mask .text{
+	position: absolute;
+    top: 4px;
+    left: 4px;
+    line-height: 16px;
+    width: 30px;
+}
