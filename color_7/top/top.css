@@ -52,8 +52,8 @@
 .icon-mask .text{
 	position: absolute;
     top: 4px;
-    left: 4px;
-    line-height: 16px;
+    left: 7px;
+    line-height: 17px;
     width: 30px;
 }
 
@@ -61,6 +61,6 @@
 	display:block;
 }
 
-#s_top_feed521 .icon-over{
+.top_feed .icon-over{
     background-image: none;
 }
