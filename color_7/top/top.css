@@ -1,7 +1,7 @@
 .top-feed{
 	visibility: hidden;
     position: fixed;
-    left: 50%;
+    left: 60%;
     margin-left: 447px;
     width: 51px;
     bottom: 30px;
@@ -55,4 +55,8 @@
     left: 4px;
     line-height: 16px;
     width: 30px;
+}
+
+.top-feed .icon-over .icon-mask{
+	display:block;
 }
